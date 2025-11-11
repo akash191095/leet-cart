@@ -6,6 +6,7 @@ import styles from "./navbar.module.css";
 import { Button } from "@mantine/core";
 import Link from "next/link";
 import clsx from "clsx";
+import useCartStore from "@/app/store/useCartStore";
 
 const menu = [
   {
@@ -19,8 +20,8 @@ const menu = [
 ];
 
 export default function Navbar() {
-  const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartCount = useCartStore((state) => state.count);
 
   return (
     <>
@@ -54,7 +55,6 @@ export default function Navbar() {
             <Button
               variant="transparent"
               color="white"
-              onClick={() => setCartCount((prev) => prev + 1)}
               classNames={{
                 root: styles.cartButton,
               }}
