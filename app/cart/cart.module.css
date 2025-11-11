@@ -1,0 +1,139 @@
+@reference "../../app/globals.css";
+
+.cartPage {
+  @apply min-h-screen py-8;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+.pageTitle {
+  @apply text-4xl font-bold mb-8 text-gray-100;
+}
+
+.cartLayout {
+  @apply grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8;
+}
+
+.cartItems {
+  @apply flex flex-col gap-4;
+}
+
+.cartItem {
+  @apply transition-all duration-300 bg-secondary border border-purple-900 rounded-lg;
+}
+
+.itemContent {
+  @apply p-6 flex justify-between items-start gap-8 flex-col sm:flex-row;
+}
+
+.itemInfo {
+  @apply flex-1;
+}
+
+.itemName {
+  @apply text-xl font-semibold mb-2 text-gray-100;
+}
+
+.itemDescription {
+  @apply text-sm text-gray-300 mb-3;
+}
+
+.itemPrice {
+  @apply text-base font-semibold text-primary;
+}
+
+.itemActions {
+  @apply flex flex-col sm:flex-row items-end sm:items-center gap-4 w-full sm:w-auto;
+}
+
+.quantityControl {
+  @apply flex items-center gap-3;
+}
+
+.quantityButton {
+  @apply w-8 h-8 border-purple-700 hover:bg-purple-900/20 text-gray-100;
+}
+
+.quantity {
+  @apply text-base font-semibold min-w-8 text-center text-gray-100;
+}
+
+.itemTotal {
+  @apply flex flex-col items-end gap-1;
+}
+
+.totalLabel {
+  @apply text-sm text-gray-400;
+}
+
+.totalAmount {
+  @apply text-xl font-bold text-gray-100;
+}
+
+.removeButton {
+  @apply text-red-400 hover:bg-red-950/50 hover:text-red-300 relative;
+}
+
+/* Checkout Section */
+.checkoutSection {
+  @apply lg:sticky lg:top-8 h-fit;
+}
+
+.checkoutCard {
+  @apply bg-secondary border-2 border-purple-900;
+}
+
+.checkoutContent {
+  @apply flex flex-col gap-4;
+}
+
+.summaryRow {
+  @apply flex justify-between items-center text-base text-gray-200;
+}
+
+.divider {
+  @apply h-px bg-purple-900/50 my-2;
+}
+
+.totalRow {
+  @apply text-xl font-bold text-gray-100 mt-2;
+}
+
+.totalPrice {
+  @apply text-primary;
+}
+
+.checkoutFooter {
+  @apply flex flex-col gap-3 p-6;
+}
+
+.checkoutButton {
+  @apply w-full bg-primary hover:bg-primary/90 text-white font-semibold;
+}
+
+.continueButton {
+  @apply w-full border-purple-700 text-gray-100 hover:bg-purple-900/20;
+}
+
+/* Empty Cart */
+.emptyCart {
+  @apply min-h-[60vh] flex flex-col items-center justify-center text-center p-8;
+}
+
+.emptyIcon {
+  @apply w-20 h-20 text-gray-600 mb-6;
+}
+
+.emptyTitle {
+  @apply text-3xl font-bold text-gray-100 mb-2;
+}
+
+.emptyDescription {
+  @apply text-lg text-gray-300 mb-8;
+}
+
+.shopButton {
+  @apply min-w-[200px] bg-primary hover:bg-primary/90;
+}

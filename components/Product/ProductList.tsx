@@ -1,6 +1,6 @@
-import { products } from "@/app/utils/products";
 import styles from "./productList.module.css";
 import Product from "./Product";
+import { products } from "@/lib/products";
 
 export default function ProductList() {
   return (

@@ -29,7 +29,7 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <Button variant="ghost" asChild>
+            <Button variant="secondary" asChild>
               <Link href="/">
                 <div className={styles.logoSection}>
                   <span className={styles.logoText}>Leet Cart</span>
@@ -39,20 +39,22 @@ export default function Navbar() {
 
             <div className={styles.navLinks}>
               {menu.map(({ label, href }) => (
-                <Button key={href} variant="ghost" color="white" asChild>
+                <Button key={href} variant="secondary" color="white" asChild>
                   <Link href={href}>{label}</Link>
                 </Button>
               ))}
             </div>
 
-            <Button variant="ghost" className={styles.cartButton}>
-              <ShoppingCart className="min-w-6 min-h-6" strokeWidth={1.5} />
-              <Badge className={styles.badge} variant="default">
-                {cartCount > 99 ? "99+" : cartCount}
-              </Badge>
+            <Button variant="secondary" className={styles.cartButton} asChild>
+              <Link href="/cart">
+                <ShoppingCart className="min-w-6 min-h-6" strokeWidth={1.5} />
+                <Badge className={styles.badge} variant="default">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </Badge>
+              </Link>
             </Button>
             <Button
-              variant="ghost"
+              variant="secondary"
               className={styles.hamMenuButton}
               onClick={() => setIsMenuOpen(true)}
             >
@@ -74,7 +76,7 @@ export default function Navbar() {
         <div className={styles.slideMenuHeader}>
           <span className={styles.slideMenuTitle}>Menu</span>
           <Button
-            variant="ghost"
+            variant="secondary"
             color="gray"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -86,7 +88,7 @@ export default function Navbar() {
           {menu.map(({ label, href }) => (
             <Button
               key={href + "-mobile"}
-              variant="ghost"
+              variant="secondary"
               asChild
               onClick={() => setIsMenuOpen(false)}
               className={styles.slideMenuItem}

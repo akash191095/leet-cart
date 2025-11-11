@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./product.module.css";
-import { Product as ProductType } from "@/app/types/product";
+import { Product as ProductType } from "@/types/product";
 import {
   Card,
   CardContent,
@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import useCartStore from "@/store/useCartStore";
 import { formatCurrency } from "@/lib/utils";
+import useCart from "@/app/hooks/useCart";
 
 interface ProductProps {
   product: ProductType;
@@ -51,32 +52,8 @@ export default function Product({ product }: ProductProps) {
   const cartItem = useCartStore((state) =>
     state.items.find((item) => item.productId === product.id)
   );
-  const addToCart = useCartStore((state) => state.addToCart);
-  const updateQuantity = useCartStore((state) => state.updateQuantity);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
-
+  const { handleDecrement, handleIncrement, handleAddToCart } = useCart();
   const IconComponent = iconMap[product.icon as keyof typeof iconMap];
-
-  const handleAddToCart = () => {
-    addToCart(product.id);
-  };
-
-  const handleIncrement = () => {
-    if (cartItem) {
-      updateQuantity(product.id, cartItem.quantity + 1);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (cartItem) {
-      if (cartItem.quantity > 1) {
-        updateQuantity(product.id, cartItem.quantity - 1);
-      } else {
-        removeFromCart(product.id);
-      }
-    }
-  };
-
   return (
     <Card className={styles.card}>
       <CardHeader className={styles.header}>
@@ -139,7 +116,7 @@ export default function Product({ product }: ProductProps) {
         {cartItem ? (
           <div className={styles.quantitySelector}>
             <Button
-              onClick={handleDecrement}
+              onClick={() => handleDecrement(product.id, cartItem.quantity)}
               variant="default"
               size="icon"
               className={styles.quantityButton}
@@ -148,7 +125,7 @@ export default function Product({ product }: ProductProps) {
             </Button>
             <span className={styles.quantity}>{cartItem.quantity}</span>
             <Button
-              onClick={handleIncrement}
+              onClick={() => handleIncrement(product.id, cartItem.quantity)}
               variant="default"
               size="icon"
               className={styles.quantityButton}
@@ -157,7 +134,11 @@ export default function Product({ product }: ProductProps) {
             </Button>
           </div>
         ) : (
-          <Button onClick={handleAddToCart} className={styles.button} size="lg">
+          <Button
+            onClick={() => handleAddToCart(product.id)}
+            className={styles.button}
+            size="lg"
+          >
             <ShoppingCart className={styles.buttonIcon} />
             Add to Cart
           </Button>
