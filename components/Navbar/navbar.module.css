@@ -1,7 +1,7 @@
-@reference "../../globals.css";
+@reference "../../app/globals.css";
 
 .navbar {
-  @apply bg-indigo-950 h-16 flex;
+  @apply bg-secondary h-16 flex;
 }
 
 .container {
@@ -25,11 +25,11 @@
 }
 
 .cartButton {
-  @apply min-h-12 ml-auto;
+  @apply min-h-12 ml-auto relative;
 }
 
 .badge {
-  @apply absolute top-0.5 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-white;
+  @apply absolute top-0.5 right-0 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums;
 }
 
 .hamMenuButton {
@@ -43,7 +43,7 @@
 
 /* Slide-out Menu */
 .slideMenu {
-  @apply fixed top-0 right-0 h-full w-80 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden;
+  @apply fixed top-0 right-0 h-full w-80 bg-accent shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden;
 }
 
 .slideMenuOpen {
@@ -51,11 +51,11 @@
 }
 
 .slideMenuHeader {
-  @apply flex items-center justify-between p-4 border-b border-gray-200;
+  @apply flex items-center justify-between p-4 border-b border-primary/10;
 }
 
 .slideMenuTitle {
-  @apply text-lg font-bold text-gray-800;
+  @apply text-lg font-bold text-white;
 }
 
 .slideMenuContent {
@@ -64,8 +64,4 @@
 
 .slideMenuItem {
   @apply justify-start text-left h-12 flex;
-}
-
-.badge {
-  @apply absolute top-0.5 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-white;
 }

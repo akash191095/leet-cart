@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@mantine/core";
-import useCartStore from "./store/useCartStore";
+import { Button } from "@/components/ui/button";
+import useCartStore from "@/store/useCartStore";
 
 export default function Home() {
   const cartCount = useCartStore((state) => state.count);

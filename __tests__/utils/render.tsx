@@ -1,10 +1,17 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { render as testingLibraryRender } from "@testing-library/react";
-import { MantineProvider } from "@mantine/core";
 
 export function render(ui: React.ReactNode) {
   return testingLibraryRender(<>{ui}</>, {
     wrapper: ({ children }: { children: React.ReactNode }) => (
-      <MantineProvider env="test">{children}</MantineProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
     ),
   });
 }

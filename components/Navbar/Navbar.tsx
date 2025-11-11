@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Menu, ShoppingCart, X } from "lucide-react";
 import styles from "./navbar.module.css";
-import { Button } from "@mantine/core";
 import Link from "next/link";
 import clsx from "clsx";
-import useCartStore from "@/app/store/useCartStore";
+import useCartStore from "@/store/useCartStore";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const menu = [
   {
@@ -28,49 +29,34 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <Button variant="transparent" component={Link} href="/">
-              <div className={styles.logoSection}>
-                <ShoppingCart
-                  className="w-6 h-6 text-white"
-                  strokeWidth={1.5}
-                />
-                <span className={styles.logoText}>Leet Cart</span>
-              </div>
+            <Button variant="ghost" asChild>
+              <Link href="/">
+                <div className={styles.logoSection}>
+                  <span className={styles.logoText}>Leet Cart</span>
+                </div>
+              </Link>
             </Button>
 
             <div className={styles.navLinks}>
               {menu.map(({ label, href }) => (
-                <Button
-                  key={href}
-                  variant="transparent"
-                  component={Link}
-                  href={href}
-                  color="white"
-                >
-                  {label}
+                <Button key={href} variant="ghost" color="white" asChild>
+                  <Link href={href}>{label}</Link>
                 </Button>
               ))}
             </div>
 
-            <Button
-              variant="transparent"
-              color="white"
-              classNames={{
-                root: styles.cartButton,
-              }}
-            >
-              <ShoppingCart className="w-6 h-6" strokeWidth={1.5} />
-              <span className={styles.badge}>
+            <Button variant="ghost" className={styles.cartButton}>
+              <ShoppingCart className="min-w-6 min-h-6" strokeWidth={1.5} />
+              <Badge className={styles.badge} variant="default">
                 {cartCount > 99 ? "99+" : cartCount}
-              </span>
+              </Badge>
             </Button>
             <Button
-              variant="transparent"
-              color="white"
+              variant="ghost"
               className={styles.hamMenuButton}
               onClick={() => setIsMenuOpen(true)}
             >
-              <Menu className="w-6 h-6" strokeWidth={1.5} />
+              <Menu className="min-w-6 min-h-6" strokeWidth={1.5} />
             </Button>
           </div>
         </div>
@@ -88,7 +74,7 @@ export default function Navbar() {
         <div className={styles.slideMenuHeader}>
           <span className={styles.slideMenuTitle}>Menu</span>
           <Button
-            variant="transparent"
+            variant="ghost"
             color="gray"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -100,13 +86,12 @@ export default function Navbar() {
           {menu.map(({ label, href }) => (
             <Button
               key={href + "-mobile"}
-              variant="subtle"
-              component={Link}
-              href={href}
-              classNames={{ root: styles.slideMenuItem }}
+              variant="ghost"
+              asChild
               onClick={() => setIsMenuOpen(false)}
+              className={styles.slideMenuItem}
             >
-              {label}
+              <Link href={href}>{label}</Link>
             </Button>
           ))}
         </div>

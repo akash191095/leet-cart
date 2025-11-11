@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import "@mantine/core/styles.css";
 import "./globals.css";
-
-import {
-  ColorSchemeScript,
-  MantineProvider,
-  createTheme,
-  mantineHtmlProps,
-} from "@mantine/core";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,25 +14,23 @@ export const metadata: Metadata = {
   description: "Your one stop solution to all things leet and cart",
 };
 
-const theme = createTheme({
-  fontFamily: `"${geistSans.style.fontFamily}", sans-serif`,
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript />
-      </head>
-      <body>
-        <MantineProvider theme={theme}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           {children}
-        </MantineProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
