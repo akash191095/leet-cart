@@ -1,0 +1,29 @@
+@reference "../../globals.css";
+
+.navbar {
+  @apply bg-indigo-950 h-16 flex;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 flex flex-1;
+}
+
+.navContent {
+  @apply items-center justify-between flex flex-1;
+}
+
+.logoSection {
+  @apply flex items-center gap-2;
+}
+
+.logoText {
+  @apply text-lg font-bold text-white;
+}
+
+.navLinks {
+  @apply flex gap-6 mr-auto;
+}
+
+.badge {
+  @apply absolute top-0.5 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border border-white;
+}
