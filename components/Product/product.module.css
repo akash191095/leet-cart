@@ -1,0 +1,125 @@
+@reference "../../app/globals.css";
+
+.card {
+  @apply flex flex-col h-full transition-all duration-300 hover:shadow-md bg-secondary border-purple-900 shadow-purple-800;
+}
+
+.header {
+  @apply space-y-3;
+}
+
+.iconWrapper {
+  @apply w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-2;
+}
+
+.icon {
+  @apply w-6 h-6 text-primary;
+}
+
+.title {
+  @apply text-xl font-semibold text-gray-200;
+}
+
+.description {
+  @apply text-sm text-gray-200 leading-relaxed;
+}
+
+.content {
+  @apply flex-1 space-y-6;
+}
+
+.priceSection {
+  @apply py-4 border-y border-gray-100;
+}
+
+.price {
+  @apply flex items-baseline justify-center gap-1;
+}
+
+.currency {
+  @apply text-2xl font-semibold text-gray-200;
+}
+
+.amount {
+  @apply text-4xl font-bold text-gray-200;
+}
+
+.period {
+  @apply text-lg text-gray-200;
+}
+
+.coverageSection {
+  @apply space-y-3;
+}
+
+.coverageTitle {
+  @apply text-sm font-semibold text-gray-200 uppercase tracking-wide;
+}
+
+.coverageGrid {
+  @apply grid grid-cols-3 gap-3;
+}
+
+.coverageItem {
+  @apply flex flex-col items-center text-center p-3 bg-gray-50 rounded-lg text-secondary;
+}
+
+.coverageLabel {
+  @apply text-xs mb-1;
+}
+
+.coverageValue {
+  @apply text-sm font-semibold;
+}
+
+.featuresSection {
+  @apply space-y-3;
+}
+
+.featuresTitle {
+  @apply text-sm font-semibold text-gray-200 uppercase tracking-wide;
+}
+
+.featuresList {
+  @apply space-y-2;
+}
+
+.featureItem {
+  @apply flex items-start gap-2 text-sm text-gray-200;
+}
+
+.checkIcon {
+  @apply w-4 h-4 text-green-600 mt-0.5 shrink-0;
+}
+
+.footer {
+  @apply pt-6;
+}
+
+.button {
+  @apply w-full gap-2;
+}
+
+.buttonIcon {
+  @apply w-4 h-4;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.quantityButton {
+  width: 40px;
+  height: 40px;
+}
+
+.quantity {
+  font-size: 1.25rem;
+  font-weight: 600;
+  min-width: 3rem;
+  text-align: center;
+}

@@ -5,9 +5,9 @@ import { Menu, ShoppingCart, X } from "lucide-react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
 import clsx from "clsx";
-import useCartStore from "@/store/useCartStore";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import useCartStore, { selectCartCount } from "@/store/useCartStore";
 
 const menu = [
   {
@@ -22,7 +22,7 @@ const menu = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const cartCount = useCartStore((state) => state.count);
+  const cartCount = useCartStore(selectCartCount);
 
   return (
     <>
