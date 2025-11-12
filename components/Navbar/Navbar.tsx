@@ -11,14 +11,6 @@ import useCartStore, { selectCartCount } from "@/store/useCartStore";
 
 const menu = [
   {
-    label: "Products",
-    href: "/products",
-  },
-  {
-    label: "Dashboard",
-    href: "/dashboard",
-  },
-  {
     label: "Orders",
     href: "/orders",
   },
