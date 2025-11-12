@@ -37,7 +37,7 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <Button variant="secondary" asChild>
+            <Button variant="secondary" asChild className="relative -left-4">
               <Link href="/">
                 <div className={styles.logoSection}>
                   <span className={styles.logoText}>Leet Cart</span>
