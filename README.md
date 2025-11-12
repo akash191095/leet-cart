@@ -46,6 +46,10 @@ This project is a mock e-commerce platform for health insurance plans. It showca
 
 - **Automatic Discounts**: Every second order automatically receives a 10% discount, which can be overridden by a manually applied coupon.
 
+## Data Persistence
+
+All application data, including cart items, orders, and discounts, is persisted in the browser's local storage. This means that your data will be saved across sessions.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
