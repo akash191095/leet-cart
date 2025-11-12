@@ -33,12 +33,20 @@ export default function useCart() {
     addToCart(productId);
   }
 
-  async function handleCheckout({ cartItems }: { cartItems: CartItem[] }) {
+  async function handleCheckout({
+    cartItems,
+    manualDiscount,
+  }: {
+    cartItems: CartItem[];
+    manualDiscount?: Discount | null;
+  }) {
     return new Promise((resolve, reject) => {
       setTimeout(async () => {
         try {
-          let discount: Discount | null = null;
-          if ((orders.length + 1) % 2 === 0) {
+          let discount: Discount | null = manualDiscount || null;
+
+          // Only apply auto-discount if no manual discount provided
+          if (!manualDiscount && (orders.length + 1) % 2 === 0) {
             // every second order gets discount
             const discountPercentage = 10;
             const code = `DISCOUNT-10-#${orders.length + 1}`;
@@ -50,6 +58,7 @@ export default function useCart() {
               discount = data.data;
             }
           }
+
           createOrder({ cartItems, discount });
           resolve({ cartItems, discount });
         } catch (error) {
@@ -59,9 +68,10 @@ export default function useCart() {
     });
   }
 
-  async function requestDiscountCode(
-    discount: Omit<Discount, "id">
-  ): Promise<APIError> {
+  async function requestDiscountCode(discount: {
+    code: string;
+    percentage: number;
+  }): Promise<APIError> {
     // validate if discount code is unique
     const isUniqueCode =
       discounts.find((dis) => dis.code === discount.code) === undefined;
@@ -89,5 +99,6 @@ export default function useCart() {
     handleRemove,
     handleAddToCart,
     handleCheckout,
+    requestDiscountCode,
   };
 }

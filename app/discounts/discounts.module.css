@@ -1,0 +1,81 @@
+@reference "../../app/globals.css";
+
+/* ============================================
+   DISCOUNTS HEADER
+   ============================================ */
+
+.header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.createButton {
+  @apply bg-primary hover:bg-primary/90;
+}
+
+/* ============================================
+   DISCOUNTS LIST
+   ============================================ */
+
+.discountsList {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* ============================================
+   DISCOUNT CARD
+   ============================================ */
+
+.discountCard {
+  @apply bg-secondary border border-purple-900 transition-all duration-300 hover:border-purple-700;
+}
+
+.cardContent {
+  @apply p-6;
+}
+
+.codeSection {
+  @apply mb-4;
+}
+
+.codeLabel {
+  @apply text-sm text-gray-400 mb-1;
+}
+
+.code {
+  @apply text-xl font-mono font-bold text-primary break-all;
+}
+
+.discountSection {
+  @apply flex items-center justify-between;
+}
+
+.discountLabel {
+  @apply text-sm text-gray-400;
+}
+
+.discountValue {
+  @apply text-3xl font-bold text-green-400;
+}
+
+.discountPercentage {
+  @apply text-lg text-gray-300;
+}
+
+/* ============================================
+   CREATE DISCOUNT DIALOG
+   ============================================ */
+
+.dialogContent {
+  @apply flex flex-col gap-4;
+}
+
+.formField {
+  @apply flex flex-col gap-2;
+}
+
+.input {
+  @apply bg-secondary border-purple-900 text-gray-100;
+}
+
+.dialogFooter {
+  @apply flex gap-2 justify-end mt-4;
+}

@@ -7,7 +7,7 @@ interface EmptyStateProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  action: {
+  action?: {
     label: string;
     href: string;
   };
@@ -24,9 +24,11 @@ export default function EmptyState({
       <Icon className={shared.emptyIcon} />
       <h2 className={shared.emptyTitle}>{title}</h2>
       <p className={shared.emptyDescription}>{description}</p>
-      <Button asChild size="lg" className={shared.shopButton}>
-        <Link href={action.href}>{action.label}</Link>
-      </Button>
+      {action ? (
+        <Button asChild size="lg" className={shared.shopButton}>
+          <Link href={action.href}>{action.label}</Link>
+        </Button>
+      ) : null}
     </div>
   );
 }

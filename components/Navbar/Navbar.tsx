@@ -22,6 +22,10 @@ const menu = [
     label: "Orders",
     href: "/orders",
   },
+  {
+    label: "Discounts",
+    href: "/discounts",
+  },
 ];
 
 export default function Navbar() {

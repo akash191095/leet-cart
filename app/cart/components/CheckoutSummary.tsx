@@ -17,15 +17,18 @@ import { products } from "@/lib/products";
 import { formatCurrency } from "@/lib/utils";
 import useCart from "@/app/hooks/useCart";
 import CheckoutStatusModal from "./CheckoutStatusModal";
+import DiscountInput from "./DiscountInput";
 import { Dialog } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { APIError } from "@/types/common";
 import { TAX_PERCENTAGE } from "@/lib/consts";
+import { Discount } from "@/types/discount";
 
 export default function CheckoutSummary() {
   const [loading, setLoading] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [appliedDiscount, setAppliedDiscount] = useState<Discount | null>(null);
   const router = useRouter();
 
   const items = useCartStore((state) => state.items);
@@ -50,16 +53,22 @@ export default function CheckoutSummary() {
     }, 0);
   }, [cartItems]);
 
-  const tax = subtotal * (TAX_PERCENTAGE / 100); // 10% tax
-  const total = subtotal + tax;
+  const discountAmount = appliedDiscount
+    ? subtotal * (appliedDiscount.percentage / 100)
+    : 0;
+
+  const tax = (subtotal - discountAmount) * (TAX_PERCENTAGE / 100); // 10% tax on discounted amount
+  const total = subtotal - discountAmount + tax;
 
   async function onCheckoutClick() {
     try {
       setLoading(true);
       await handleCheckout({
         cartItems: items,
+        manualDiscount: appliedDiscount,
       });
       resetCart();
+      setAppliedDiscount(null);
       setIsDialogOpen(true);
     } catch (err: unknown) {
       const error = err as APIError;
@@ -76,10 +85,25 @@ export default function CheckoutSummary() {
           <CardTitle>Order Summary</CardTitle>
         </CardHeader>
         <CardContent className={styles.checkoutContent}>
+          <DiscountInput
+            onDiscountApply={setAppliedDiscount}
+            className="mb-4"
+          />
+
+          <div className={shared.divider} />
+
           <div className={styles.summaryRow}>
             <span>Subtotal</span>
             <span>{formatCurrency(subtotal)}</span>
           </div>
+
+          {appliedDiscount && (
+            <div className={styles.summaryRow + " text-green-400"}>
+              <span>Discount ({appliedDiscount.code})</span>
+              <span>-{formatCurrency(discountAmount)}</span>
+            </div>
+          )}
+
           <div className={styles.summaryRow}>
             <span>Tax (10%)</span>
             <span>{formatCurrency(tax)}</span>

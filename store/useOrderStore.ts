@@ -29,6 +29,11 @@ const useOrderStore = create<OrderStore>()(
               discountAmount: Number(discountAmount.toFixed(2)),
             },
           ],
+          discounts: data.discount
+            ? state.discounts.map((d) =>
+                d.id === data.discount!.id ? { ...d, isAvailable: false } : d
+              )
+            : state.discounts,
         }));
       },
       createDiscount: (percentage, code) => {
@@ -39,6 +44,7 @@ const useOrderStore = create<OrderStore>()(
               id: Date.now(),
               code: code,
               percentage,
+              isAvailable: true,
             },
           ],
         }));
