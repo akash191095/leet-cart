@@ -130,9 +130,9 @@ export default function CheckoutSummary() {
       </Card>
       <Dialog
         open={isDialogOpen}
-        onOpenChange={async (value) => {
+        onOpenChange={(value) => {
           if (value === false) {
-            await router.push("/");
+            router.push("/orders");
             setIsDialogOpen(false);
           }
         }}
