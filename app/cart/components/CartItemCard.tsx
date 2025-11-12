@@ -48,6 +48,7 @@ export default function CartItemCard({ item }: CartItemCardProps) {
             size="icon"
             onClick={() => handleRemove(item.productId)}
             className={styles.removeButton}
+            aria-label="Remove item"
           >
             <Trash2 className="h-4 w-4" />
           </Button>
