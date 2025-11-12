@@ -1,7 +1,7 @@
 @reference "../../app/globals.css";
 
 .cartPage {
-  @apply min-h-screen py-8;
+  @apply py-8;
 }
 
 .container {

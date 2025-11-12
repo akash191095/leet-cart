@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { products } from "@/lib/products";
 import CartItemCard from "./CartItemCard";
 import EmptyState from "./EmptyState";
+import { Product } from "@/types/product";
 
 export default function CartItemList() {
   const items = useCartStore((state) => state.items);
@@ -29,7 +30,13 @@ export default function CartItemList() {
     <div className={styles.cartItems}>
       {cartItems.map((item) => {
         if (!item.product) return null;
-        return <CartItemCard key={item.productId} item={item} />;
+        const typedItem = item as {
+          productId: string;
+          quantity: number;
+          product: Product;
+          price: number;
+        };
+        return <CartItemCard key={item.productId} item={typedItem} />;
       })}
     </div>
   );

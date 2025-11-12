@@ -52,6 +52,7 @@ export default function Product({ product }: ProductProps) {
   const cartItem = useCartStore((state) =>
     state.items.find((item) => item.productId === product.id)
   );
+
   const { handleDecrement, handleIncrement, handleAddToCart } = useCart();
   const IconComponent = iconMap[product.icon as keyof typeof iconMap];
   return (

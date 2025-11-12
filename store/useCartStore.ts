@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { CartStore } from "../types/cart";
+import { products } from "@/lib/products";
 
 const useCartStore = create<CartStore>()(
   persist(
@@ -8,6 +9,10 @@ const useCartStore = create<CartStore>()(
       items: [],
       addToCart: (productId) =>
         set((state) => {
+          const product = products.find((product) => product.id === productId);
+          if (!product) {
+            return state;
+          }
           // Check if item already exists
           const existingItem = state.items.find(
             (item) => item.productId === productId
@@ -26,7 +31,10 @@ const useCartStore = create<CartStore>()(
 
           // If new item, add with quantity 1
           return {
-            items: [...state.items, { productId, quantity: 1 }],
+            items: [
+              ...state.items,
+              { productId, price: product.price, quantity: 1 },
+            ],
           };
         }),
       updateQuantity: (productId, quantity) =>
@@ -38,6 +46,10 @@ const useCartStore = create<CartStore>()(
       removeFromCart: (productId) =>
         set((state) => ({
           items: state.items.filter((item) => item.productId !== productId),
+        })),
+      resetCart: () =>
+        set(() => ({
+          items: [],
         })),
     }),
     {
