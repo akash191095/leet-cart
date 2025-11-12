@@ -24,12 +24,11 @@ import {
   Activity,
   Check,
   ShoppingCart,
-  Minus,
-  Plus,
 } from "lucide-react";
 import useCartStore from "@/store/useCartStore";
 import { formatCurrency } from "@/lib/utils";
 import useCart from "@/app/hooks/useCart";
+import QuantityControl from "@/app/components/QuantityControl";
 
 interface ProductProps {
   product: ProductType;
@@ -53,7 +52,7 @@ export default function Product({ product }: ProductProps) {
     state.items.find((item) => item.productId === product.id)
   );
 
-  const { handleDecrement, handleIncrement, handleAddToCart } = useCart();
+  const { handleAddToCart } = useCart();
   const IconComponent = iconMap[product.icon as keyof typeof iconMap];
   return (
     <Card className={styles.card}>
@@ -115,25 +114,14 @@ export default function Product({ product }: ProductProps) {
 
       <CardFooter className={styles.footer}>
         {cartItem ? (
-          <div className={styles.quantitySelector}>
-            <Button
-              onClick={() => handleDecrement(product.id, cartItem.quantity)}
-              variant="default"
-              size="icon"
-              className={styles.quantityButton}
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-            <span className={styles.quantity}>{cartItem.quantity}</span>
-            <Button
-              onClick={() => handleIncrement(product.id, cartItem.quantity)}
-              variant="default"
-              size="icon"
-              className={styles.quantityButton}
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
+          <QuantityControl
+            productId={product.id}
+            quantity={cartItem.quantity}
+            variant="default"
+            className={styles.quantitySelector}
+            buttonClassName={styles.quantityButton}
+            quantityClassName={styles.quantity}
+          />
         ) : (
           <Button
             onClick={() => handleAddToCart(product.id)}

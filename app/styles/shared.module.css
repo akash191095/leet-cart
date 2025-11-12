@@ -1,0 +1,85 @@
+@reference "../globals.css";
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.page {
+  @apply py-8;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+.pageTitle {
+  @apply text-4xl font-bold mb-8 text-gray-100;
+}
+
+/* ============================================
+   EMPTY STATE COMPONENTS
+   ============================================ */
+
+.emptyState {
+  @apply min-h-[60vh] flex flex-col items-center justify-center text-center p-8;
+}
+
+.emptyIcon {
+  @apply w-20 h-20 text-gray-600 mb-6;
+}
+
+.emptyTitle {
+  @apply text-3xl font-bold text-gray-100 mb-2;
+}
+
+.emptyDescription {
+  @apply text-lg text-gray-300 mb-8;
+}
+
+.shopButton {
+  @apply min-w-[200px] bg-primary hover:bg-primary/90;
+}
+
+/* ============================================
+   SUMMARY COMPONENTS
+   ============================================ */
+
+.summaryRow {
+  @apply flex justify-between items-center;
+}
+
+.summaryLabel {
+  @apply text-gray-400;
+}
+
+.summaryValue {
+  @apply text-gray-200 font-medium;
+}
+
+.totalRow {
+  @apply font-bold text-gray-100;
+}
+
+.totalAmount {
+  @apply text-primary;
+}
+
+/* ============================================
+   COMMON UI ELEMENTS
+   ============================================ */
+
+.divider {
+  @apply h-px bg-purple-900/50 my-2;
+}
+
+.statItem {
+  @apply flex flex-col gap-1;
+}
+
+.statLabel {
+  @apply text-sm text-gray-400;
+}
+
+.statValue {
+  @apply text-2xl font-bold text-gray-100;
+}

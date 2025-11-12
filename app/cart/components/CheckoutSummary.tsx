@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import styles from "../cart.module.css";
+import shared from "@/app/styles/shared.module.css";
 import Link from "next/link";
 import useCartStore from "@/store/useCartStore";
 import { useMemo, useState } from "react";
@@ -70,7 +71,7 @@ export default function CheckoutSummary() {
 
   return (
     <div className={styles.checkoutSection}>
-      <Card className={styles.checkoutCard}>
+      <Card variant="secondary" className={styles.checkoutCard}>
         <CardHeader>
           <CardTitle>Order Summary</CardTitle>
         </CardHeader>
@@ -83,7 +84,7 @@ export default function CheckoutSummary() {
             <span>Tax (10%)</span>
             <span>{formatCurrency(tax)}</span>
           </div>
-          <div className={styles.divider} />
+          <div className={shared.divider} />
           <div className={styles.summaryRow + " " + styles.totalRow}>
             <span>Total</span>
             <span className={styles.totalPrice}>${total.toFixed(2)}/month</span>

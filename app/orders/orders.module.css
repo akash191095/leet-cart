@@ -1,20 +1,16 @@
 @reference "../../app/globals.css";
 
-.ordersPage {
-  @apply py-8;
-}
-
-.container {
-  @apply max-w-7xl mx-auto px-4;
-}
-
-.pageTitle {
-  @apply text-4xl font-bold mb-8 text-gray-100;
-}
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
 
 .ordersList {
   @apply flex flex-col gap-6;
 }
+
+/* ============================================
+   ORDER CARD
+   ============================================ */
 
 .orderCard {
   @apply bg-secondary border border-purple-900 rounded-lg overflow-hidden transition-all duration-300 hover:border-purple-700;
@@ -48,6 +44,10 @@
   @apply p-6 flex flex-col gap-4;
 }
 
+/* ============================================
+   ORDER ITEMS
+   ============================================ */
+
 .orderItems {
   @apply flex flex-col gap-3;
 }
@@ -72,24 +72,12 @@
   @apply text-gray-100 font-semibold whitespace-nowrap;
 }
 
-.divider {
-  @apply h-px bg-purple-900/50 my-2;
-}
+/* ============================================
+   ORDER SUMMARY
+   ============================================ */
 
 .orderSummary {
   @apply flex flex-col gap-2;
-}
-
-.summaryRow {
-  @apply flex justify-between items-center text-sm;
-}
-
-.summaryLabel {
-  @apply text-gray-400;
-}
-
-.summaryValue {
-  @apply text-gray-200 font-medium;
 }
 
 .discountRow {
@@ -100,15 +88,10 @@
   @apply text-xs font-mono bg-green-900/20 px-2 py-1 rounded;
 }
 
-.totalRow {
-  @apply text-lg font-bold text-gray-100 mt-2 pt-2 border-t border-purple-900/50;
-}
+/* ============================================
+   SUMMARY STATS
+   ============================================ */
 
-.totalAmount {
-  @apply text-primary;
-}
-
-/* Summary Stats */
 .summaryStats {
   @apply bg-secondary border border-purple-900 rounded-lg p-6 mb-6;
 }
@@ -117,39 +100,6 @@
   @apply grid grid-cols-1 sm:grid-cols-3 gap-4;
 }
 
-.statItem {
-  @apply flex flex-col gap-1;
-}
-
-.statLabel {
-  @apply text-sm text-gray-400;
-}
-
-.statValue {
-  @apply text-2xl font-bold text-gray-100;
-}
-
 .statSavings {
   @apply text-green-400;
-}
-
-/* Empty State */
-.emptyOrders {
-  @apply min-h-[60vh] flex flex-col items-center justify-center text-center p-8;
-}
-
-.emptyIcon {
-  @apply w-20 h-20 text-gray-600 mb-6;
-}
-
-.emptyTitle {
-  @apply text-3xl font-bold text-gray-100 mb-2;
-}
-
-.emptyDescription {
-  @apply text-lg text-gray-300 mb-8;
-}
-
-.shopButton {
-  @apply min-w-[200px] bg-primary hover:bg-primary/90;
 }

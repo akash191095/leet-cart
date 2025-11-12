@@ -1,11 +1,11 @@
-import styles from "./orders.module.css";
+import shared from "@/app/styles/shared.module.css";
 import OrderList from "./components/OrderList";
 
 export default function OrdersPage() {
   return (
-    <div className={styles.ordersPage}>
-      <div className={styles.container}>
-        <h1 className={styles.pageTitle}>Your Orders</h1>
+    <div className={shared.page}>
+      <div className={shared.container}>
+        <h1 className={shared.pageTitle}>Your Orders</h1>
         <OrderList />
       </div>
     </div>

@@ -1,20 +1,16 @@
 @reference "../../app/globals.css";
 
-.cartPage {
-  @apply py-8;
-}
-
-.container {
-  @apply max-w-7xl mx-auto px-4;
-}
-
-.pageTitle {
-  @apply text-4xl font-bold mb-8 text-gray-100;
-}
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
 
 .cartLayout {
   @apply grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8;
 }
+
+/* ============================================
+   CART ITEMS
+   ============================================ */
 
 .cartItems {
   @apply flex flex-col gap-4;
@@ -76,7 +72,10 @@
   @apply text-red-400 hover:bg-red-950/50 hover:text-red-300 relative;
 }
 
-/* Checkout Section */
+/* ============================================
+   CHECKOUT SECTION
+   ============================================ */
+
 .checkoutSection {
   @apply lg:sticky lg:top-8 h-fit;
 }
@@ -87,22 +86,6 @@
 
 .checkoutContent {
   @apply flex flex-col gap-4;
-}
-
-.summaryRow {
-  @apply flex justify-between items-center text-base text-gray-200;
-}
-
-.divider {
-  @apply h-px bg-purple-900/50 my-2;
-}
-
-.totalRow {
-  @apply text-xl font-bold text-gray-100 mt-2;
-}
-
-.totalPrice {
-  @apply text-primary;
 }
 
 .checkoutFooter {
@@ -117,23 +100,18 @@
   @apply w-full border-purple-700 text-gray-100 hover:bg-purple-900/20;
 }
 
-/* Empty Cart */
-.emptyCart {
-  @apply min-h-[60vh] flex flex-col items-center justify-center text-center p-8;
+/* ============================================
+   CART-SPECIFIC SUMMARY STYLES
+   ============================================ */
+
+.summaryRow {
+  @apply flex justify-between items-center text-base text-gray-200;
 }
 
-.emptyIcon {
-  @apply w-20 h-20 text-gray-600 mb-6;
+.totalRow {
+  @apply text-xl font-bold text-gray-100 mt-2;
 }
 
-.emptyTitle {
-  @apply text-3xl font-bold text-gray-100 mb-2;
-}
-
-.emptyDescription {
-  @apply text-lg text-gray-300 mb-8;
-}
-
-.shopButton {
-  @apply min-w-[200px] bg-primary hover:bg-primary/90;
+.totalPrice {
+  @apply text-primary;
 }

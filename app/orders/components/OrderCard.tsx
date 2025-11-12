@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
 import { products } from "@/lib/products";
 import styles from "../orders.module.css";
+import shared from "@/app/styles/shared.module.css";
 import { Order } from "@/types/order";
 
 interface OrderCardProps {
@@ -60,33 +61,33 @@ export default function OrderCard({ order }: OrderCardProps) {
           ))}
         </div>
 
-        <div className={styles.divider} />
+        <div className={shared.divider} />
 
         <div className={styles.orderSummary}>
-          <div className={styles.summaryRow}>
-            <span className={styles.summaryLabel}>Subtotal</span>
-            <span className={styles.summaryValue}>
+          <div className={shared.summaryRow}>
+            <span className={shared.summaryLabel}>Subtotal</span>
+            <span className={shared.summaryValue}>
               {formatCurrency(order.totalAmount)}
             </span>
           </div>
 
           {order.discount && (
-            <div className={`${styles.summaryRow} ${styles.discountRow}`}>
-              <span className={styles.summaryLabel}>
+            <div className={`${shared.summaryRow} ${styles.discountRow}`}>
+              <span className={shared.summaryLabel}>
                 Discount{" "}
                 <span className={styles.discountCode}>
                   {order.discount.code}
                 </span>
               </span>
-              <span className={styles.summaryValue}>
+              <span className={shared.summaryValue}>
                 -{formatCurrency(order.discountAmount)}
               </span>
             </div>
           )}
 
-          <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+          <div className={`${shared.summaryRow} ${shared.totalRow}`}>
             <span>Total Paid</span>
-            <span className={styles.totalAmount}>
+            <span className={shared.totalAmount}>
               {formatCurrency(finalAmount)}
             </span>
           </div>
