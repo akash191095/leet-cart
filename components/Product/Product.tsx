@@ -55,7 +55,7 @@ export default function Product({ product }: ProductProps) {
   const { handleAddToCart } = useCart();
   const IconComponent = iconMap[product.icon as keyof typeof iconMap];
   return (
-    <Card className={styles.card}>
+    <Card className={styles.card} data-testid={`product-${product.id}`}>
       <CardHeader className={styles.header}>
         <div className={styles.iconWrapper}>
           {IconComponent && <IconComponent className={styles.icon} />}

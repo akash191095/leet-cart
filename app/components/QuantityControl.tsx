@@ -31,6 +31,7 @@ export default function QuantityControl({
         size="icon"
         onClick={() => handleDecrement(productId, quantity)}
         className={buttonClassName}
+        aria-label="-"
       >
         <Minus className="h-4 w-4" />
       </Button>
@@ -40,6 +41,7 @@ export default function QuantityControl({
         size="icon"
         onClick={() => handleIncrement(productId, quantity)}
         className={buttonClassName}
+        aria-label="+"
       >
         <Plus className="h-4 w-4" />
       </Button>
