@@ -18,6 +18,10 @@ const menu = [
     label: "Dashboard",
     href: "/dashboard",
   },
+  {
+    label: "Orders",
+    href: "/orders",
+  },
 ];
 
 export default function Navbar() {
